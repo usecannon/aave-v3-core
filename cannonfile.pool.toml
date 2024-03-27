@@ -6,7 +6,7 @@ description = "Aave's v3 Pool contract, main point of interaction with an Aave p
 defaultValue = "Aave Ethereum Market"
 
 [setting.owner]
-defaultValue = "0xc783df8a850f42e7F7e57013759C285caa701eB6" # Hardhat's first address (Swap this out when deploying to a different network)
+defaultValue = "0xDF399bA68c6561419140fBFF0e7584C6f994BB1b" # Hardhat's first address (Swap this out when deploying to a different network)
 
 # `salt` here only affects proxy contract
 [setting.salt]
