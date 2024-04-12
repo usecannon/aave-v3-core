@@ -8,11 +8,6 @@ defaultValue = "Aave Ethereum Market"
 [setting.owner]
 defaultValue = "0xDF399bA68c6561419140fBFF0e7584C6f994BB1b" # Hardhat's first address (Swap this out when deploying to a different network)
 
-# `salt` here only affects proxy contract
-[setting.salt]
-description = "Change this to a unique string when deploying multiple instances of the system. Note that only the proxy contract will be unique."
-defaultValue = "aave-v3-pool-eth"
-
 # Libraries
 [contract.ReserveConfiguration]
 artifact = 'contracts/protocol/libraries/configuration/ReserveConfiguration.sol:ReserveConfiguration'
@@ -55,12 +50,9 @@ args = [
   "<%= settings.owner %>" # address owner
 ]
 
-[contract.Proxy]
+[contract.InitialProxy]
 artifact = "contracts/protocol/libraries/aave-upgradeability/InitializableImmutableAdminUpgradeabilityProxy.sol:InitializableImmutableAdminUpgradeabilityProxy"
 args = ["<%= settings.owner %>"]
-salt = "<%= settings.salt %>"
-create2 = true
-
 
 [contract.Pool]
 artifact = "contracts/protocol/pool/Pool.sol:Pool"
@@ -88,16 +80,16 @@ depends = [
   "contract.FlashLoanLogic",
   "contract.LiquidationLogic",
   "contract.DataTypes",
-  "contract.BridgeLogic"
+  "contract.BridgeLogic",
+  "contract.InitialProxy"
 ]
 
 [invoke.upgrade_proxy]
-target = ["Proxy"]
+target = ["InitialProxy"]
 from = "<%= settings.owner %>"
 func = "upgradeTo"
 args = ["<%= contracts.Pool.address %>"]
-
-depends = [
-  "contract.Proxy",
-  "contract.Pool"
-]
+factory.InitializableImmutableAdminUpgradeabilityProxy.abiOf = ["Pool"]
+factory.InitializableImmutableAdminUpgradeabilityProxy.event = "Upgraded"
+factory.InitializableImmutableAdminUpgradeabilityProxy.arg = 0
+factory.InitializableImmutableAdminUpgradeabilityProxy.highlight = true
