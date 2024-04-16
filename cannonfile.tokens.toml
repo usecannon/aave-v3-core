@@ -10,6 +10,7 @@ artifact = "contracts/protocol/tokenization/AToken.sol:AToken"
 args = [
   "<%= imports.pool.contracts.Pool.address %>"
 ]
+highlight = true
 depends = ["import.pool"]
 
 [contract.StableDebtToken]
@@ -17,6 +18,7 @@ artifact = "contracts/protocol/tokenization/StableDebtToken.sol:StableDebtToken"
 args = [
   "<%= imports.pool.contracts.Pool.address %>"
 ]
+highlight = true
 depends = ["import.pool"]
 
 [contract.VariableDebtToken]
@@ -24,4 +26,5 @@ artifact = "contracts/protocol/tokenization/VariableDebtToken.sol:VariableDebtTo
 args = [
   "<%= imports.pool.contracts.Pool.address %>"
 ]
+highlight = true
 depends = ["import.pool"]
