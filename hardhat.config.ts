@@ -66,8 +66,14 @@ const hardhatConfig = {
       chainId: 31337,
       gas: 12000000, // Prevent gas estimation for better error results in tests
     },
+    mainnet: {
+      url: process.env.PROVIDER_URL,
+      chainId: 1,
+      accounts: process.env.PRIVATE_KEY?.split(','),
+      gas: DEFAULT_BLOCK_GAS_LIMIT,
+    },
     sepolia: {
-      url: 'https://eth-sepolia.g.alchemy.com/v2/oSkceFagLoSO4YoXMvKOGiSAeCkm8knd',
+      url: process.env.PROVIDER_URL,
       chainId: 11155111,
       accounts: process.env.PRIVATE_KEY?.split(','),
     },

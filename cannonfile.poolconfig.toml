@@ -1,3 +1,0 @@
-name = "aave-v3-poolconfig"
-version = "<%= package.version %>"
-description = "Aave's v3 Pool Configuration Contracts"

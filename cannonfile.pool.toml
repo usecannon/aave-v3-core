@@ -6,7 +6,7 @@ description = "Aave's v3 Pool contract, main point of interaction with an Aave p
 defaultValue = "Aave Ethereum Market"
 
 [setting.owner]
-defaultValue = "0xDF399bA68c6561419140fBFF0e7584C6f994BB1b" # Hardhat's first address (Swap this out when deploying to a different network)
+defaultValue = "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266" # Hardhat's first address (Swap this out when deploying to a different network)
 
 # Libraries
 [contract.ReserveConfiguration]
@@ -58,6 +58,7 @@ args = ["<%= settings.owner %>"]
 artifact = "contracts/protocol/pool/Pool.sol:Pool"
 from = "<%= settings.owner %>"
 args = ["<%= contracts.PoolAddressesProvider.address %>"]
+highlight = true
 
 libraries.BorrowLogic = "<%= contracts.BorrowLogic.address %>"
 libraries.ReserveConfiguration = "<%= contracts.ReserveConfiguration.address %>"
