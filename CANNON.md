@@ -20,3 +20,7 @@ To build the packages on a specific network, make sure the network config is def
 ```
 PROVIDER_URL=YOUR_PROVIDER_URL PRIVATE_KEY=YOUR_PRIVATE_KEY npx hardhat cannon:build --network < network_name > < cannonfile_name >
 ```
+
+Finally, run the generate-cannon-packages.sh script to alter the packages to match addresses on their respective network. Here's an example of altering the aave-v3-pool package on mainnet
+
+`./generate-cannon-packages.sh pool mainnet 1`
